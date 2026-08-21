@@ -343,6 +343,61 @@
       }
     }
 
+  
+    /* iPhone / narrow portrait override — deliberately LAST in CSS so it wins. */
+    @media (max-width:600px) and (orientation:portrait){
+      .clock-list{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:8px;
+      }
+
+      .clock{
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:center;
+        min-height:0;
+        padding:12px 14px 11px;
+        text-align:left;
+      }
+
+      .clock-time{
+        display:block;
+        width:100%;
+        margin:0;
+        font-size:clamp(1.9rem,9vw,2.55rem);
+        line-height:1;
+        white-space:nowrap;
+      }
+
+      .clock-name{
+        display:block;
+        width:100%;
+        min-height:0;
+        margin:6px 0 0;
+        font-size:clamp(.78rem,3.5vw,1.02rem);
+        line-height:1.12;
+        white-space:normal;
+        overflow-wrap:anywhere;
+      }
+
+      .clock-countdown{
+        display:block;
+        width:100%;
+        margin:7px 0 0;
+        font-size:clamp(.72rem,3.1vw,.92rem);
+        line-height:1.15;
+        white-space:normal;
+      }
+
+      .clock.open .clock-countdown{
+        width:auto;
+        margin-top:8px;
+        white-space:nowrap;
+      }
+    }
+
   </style>
 </head>
 <body>

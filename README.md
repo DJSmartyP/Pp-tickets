@@ -17,15 +17,3 @@ Included icon sizes:
 - 512×512 maskable icon
 
 When someone uses "Add to Home screen", the app name will display as **Phantom Peak Countdown**.
-
-
-## iPhone portrait access-bar fix
-
-On portrait phones up to 600px CSS width, each access card now uses three rows:
-1. release time
-2. access group
-3. countdown / ACCESS OPEN
-
-This prevents the group name and countdown from overlapping the release time on iPhone/Safari.
-
-The override is scoped only to narrow portrait screens. Desktop, laptop, landscape, and larger-tablet layouts are unchanged.
