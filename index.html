@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#120e0b">
   <title>Can I Buy Phantom Peak Tickets Yet?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#0b0b0c;
@@ -68,25 +71,38 @@
 
     .state-word{
       margin:0;
-      font-family:"Rockwell Extra Bold", Rockwell, "Roboto Slab", "Courier New", serif;
-      font-size:clamp(5.2rem, 10.5vw, 12rem);
-      font-weight:900;
-      line-height:.78;
-      letter-spacing:.015em;
+      font-family:"Rye", "Rockwell Extra Bold", "Arial Black", Rockwell, serif;
+      font-size:clamp(5.4rem, 11vw, 12.5rem);
+      font-weight:1000;
+      line-height:.76;
+      letter-spacing:.025em;
       text-transform:uppercase;
-      text-shadow:0 .025em 0 rgba(255,255,255,.2);
+      -webkit-text-stroke:.018em #2a1712;
+      paint-order:stroke fill;
+      text-shadow:
+        0 .035em 0 rgba(238,211,161,.55),
+        .025em .055em 0 rgba(45,24,18,.85),
+        .045em .08em .02em rgba(0,0,0,.25);
+      transform:scaleX(1.07);
+      transform-origin:center;
     }
 
     .state-word.no{
       color:#8f3f39;
-      font-size:clamp(6.8rem, 14vw, 15rem);
-      letter-spacing:.035em;
+      font-size:clamp(7.4rem, 15vw, 16rem);
+      letter-spacing:.045em;
+      transform:scaleX(1.12);
     }
     .state-word.maybe{
       color:#5c2f62;
-      font-size:clamp(3.6rem, 7vw, 7.8rem);
+      font-size:clamp(4rem, 7.8vw, 8.6rem);
+      transform:scaleX(1.03);
     }
-    .state-word.yes{color:#356b4c}
+    .state-word.yes{
+      color:#356b4c;
+      font-size:clamp(6.2rem, 12vw, 13.5rem);
+      transform:scaleX(1.10);
+    }
 
     .state-note{
       margin:.8rem 0 0;
@@ -243,11 +259,15 @@
       }
 
       .state-word.no{
-        font-size:clamp(6.4rem,29vw,12rem);
+        font-size:clamp(7rem,31vw,13rem);
+      }
+
+      .state-word.yes{
+        font-size:clamp(6rem,27vw,11rem);
       }
 
       .state-word.maybe{
-        font-size:clamp(3.2rem,14vw,6.2rem);
+        font-size:clamp(3.4rem,15vw,6.6rem);
       }
 
       .state-note{

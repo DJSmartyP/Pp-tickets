@@ -102,3 +102,7 @@ The entire live UI now uses a Western slab-serif / Victorian mechanical type tre
 - labels, footer and hidden menu: matching period-style serif
 
 No remote font service is required, keeping the GitHub Pages build self-contained and fast.
+
+## Rye display font
+
+The main `NO / MAYBE / YES` state now uses **Rye** from Google Fonts, with the previous heavy slab-serif stack retained as a fallback. The countdown interface keeps its existing Western/steampunk typography.
