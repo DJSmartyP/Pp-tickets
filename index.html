@@ -7,7 +7,7 @@
   <title>Can I Buy Phantom Peak Tickets Yet?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sancreek&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#0b0b0c;
@@ -71,37 +71,33 @@
 
     .state-word{
       margin:0;
-      font-family:"Rye", "Rockwell Extra Bold", "Arial Black", Rockwell, serif;
-      font-size:clamp(5.4rem, 11vw, 12.5rem);
-      font-weight:1000;
-      line-height:.76;
-      letter-spacing:.025em;
+      font-family:"Sancreek", "Rockwell Extra Bold", Rockwell, serif;
+      font-size:clamp(4.6rem, 9vw, 9.5rem);
+      font-weight:400;
+      line-height:.82;
+      letter-spacing:.01em;
       text-transform:uppercase;
-      -webkit-text-stroke:.018em #2a1712;
-      paint-order:stroke fill;
-      text-shadow:
-        0 .035em 0 rgba(238,211,161,.55),
-        .025em .055em 0 rgba(45,24,18,.85),
-        .045em .08em .02em rgba(0,0,0,.25);
-      transform:scaleX(1.07);
-      transform-origin:center;
+      white-space:nowrap;
+      max-width:100%;
+      text-shadow:none;
+      transform:none;
     }
 
     .state-word.no{
       color:#8f3f39;
-      font-size:clamp(7.4rem, 15vw, 16rem);
-      letter-spacing:.045em;
-      transform:scaleX(1.12);
+      font-size:clamp(6rem, 11vw, 11rem);
+      letter-spacing:.015em;
+      transform:none;
     }
     .state-word.maybe{
       color:#5c2f62;
-      font-size:clamp(4rem, 7.8vw, 8.6rem);
-      transform:scaleX(1.03);
+      font-size:clamp(3.5rem, 6.2vw, 6.2rem);
+      transform:none;
     }
     .state-word.yes{
       color:#356b4c;
-      font-size:clamp(6.2rem, 12vw, 13.5rem);
-      transform:scaleX(1.10);
+      font-size:clamp(5.3rem, 9.5vw, 9.8rem);
+      transform:none;
     }
 
     .state-note{
@@ -259,15 +255,15 @@
       }
 
       .state-word.no{
-        font-size:clamp(7rem,31vw,13rem);
+        font-size:clamp(5.6rem,23vw,9rem);
       }
 
       .state-word.yes{
-        font-size:clamp(6rem,27vw,11rem);
+        font-size:clamp(5rem,20vw,8rem);
       }
 
       .state-word.maybe{
-        font-size:clamp(3.4rem,15vw,6.6rem);
+        font-size:clamp(3rem,11.5vw,4.8rem);
       }
 
       .state-note{
@@ -336,15 +332,6 @@
       }
     }
 
-    @media (prefers-reduced-motion:no-preference){
-      .state-word.yes{
-        animation:pop .5s cubic-bezier(.2,.85,.2,1.15) both;
-      }
-      @keyframes pop{
-        from{transform:scale(.8);opacity:.15}
-        to{transform:scale(1);opacity:1}
-      }
-    }
 
     .test-trigger{
       position:absolute;
@@ -574,6 +561,21 @@
       return `${String(hours).padStart(2,"0")}h ${String(mins).padStart(2,"0")}m ${String(secs).padStart(2,"0")}s`;
     }
 
+    function fitStateWord(){
+      // Keep the live state safely inside its parchment region on every viewport/font render.
+      const available = stateWord.parentElement.clientWidth * 0.96;
+      if (!available) return;
+
+      stateWord.style.fontSize = "";
+      let size = parseFloat(getComputedStyle(stateWord).fontSize);
+      let guard = 0;
+      while (stateWord.scrollWidth > available && size > 24 && guard < 40){
+        size *= 0.94;
+        stateWord.style.fontSize = `${size}px`;
+        guard += 1;
+      }
+    }
+
     function renderState(state){
       if(state === "yes"){
         stateWord.textContent = "YES";
@@ -588,6 +590,7 @@
         stateWord.className = "state-word no";
         stateNote.textContent = "";
       }
+      requestAnimationFrame(fitStateWord);
     }
 
     function updateState(now){
@@ -639,6 +642,11 @@
         testMenu.setAttribute("aria-hidden", "true");
       }
     });
+
+    window.addEventListener("resize", fitStateWord);
+    if (document.fonts && document.fonts.ready){
+      document.fonts.ready.then(fitStateWord);
+    }
 
     update();
     setInterval(update,1000);
