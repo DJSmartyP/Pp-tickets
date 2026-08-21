@@ -288,6 +288,83 @@
         to{transform:scale(1);opacity:1}
       }
     }
+
+    .test-trigger{
+      position:absolute;
+      z-index:5;
+      appearance:none;
+      border:0;
+      background:transparent;
+      padding:0;
+      margin:0;
+      cursor:pointer;
+      opacity:0;
+    }
+
+    .test-menu{
+      position:absolute;
+      z-index:20;
+      display:none;
+      gap:6px;
+      padding:8px;
+      border:1px solid rgba(201,151,63,.85);
+      background:rgba(8,11,12,.94);
+      box-shadow:0 8px 24px rgba(0,0,0,.45);
+      backdrop-filter:blur(4px);
+    }
+
+    .test-menu.show{display:flex}
+
+    .test-menu button{
+      appearance:none;
+      border:1px solid #8f7144;
+      background:#171b1c;
+      color:#ead9b8;
+      padding:6px 8px;
+      font:700 .7rem/1 Arial,sans-serif;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    .test-menu button.active{
+      border-color:#c9973f;
+      color:#fff1cf;
+      background:#3a2b18;
+    }
+
+    @media (orientation: landscape){
+      /* First O in JONABOT */
+      .test-trigger{
+        left:40.5%;
+        top:5.1%;
+        width:5.2%;
+        height:10.5%;
+      }
+      .test-menu{
+        left:36%;
+        top:15%;
+      }
+    }
+
+    @media (orientation: portrait){
+      .test-trigger{
+        left:31.5%;
+        top:9.5%;
+        width:9%;
+        height:7.2%;
+      }
+      .test-menu{
+        left:50%;
+        top:17%;
+        transform:translateX(-50%);
+        flex-wrap:wrap;
+        justify-content:center;
+        width:max-content;
+        max-width:88%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -307,6 +384,21 @@
       <div class="state-overlay" aria-live="polite">
         <div id="stateWord" class="state-word no">NO</div>
         <p id="stateNote" class="state-note"></p>
+      </div>
+
+      <button
+        id="testTrigger"
+        class="test-trigger"
+        type="button"
+        aria-label="Open hidden state test menu"
+        title=""
+      ></button>
+
+      <div id="testMenu" class="test-menu" aria-hidden="true">
+        <button type="button" data-test-state="auto" class="active">Auto</button>
+        <button type="button" data-test-state="no">No</button>
+        <button type="button" data-test-state="maybe">Maybe</button>
+        <button type="button" data-test-state="yes">Yes</button>
       </div>
     </section>
 
@@ -363,6 +455,11 @@
     const stateWord = document.getElementById("stateWord");
     const stateNote = document.getElementById("stateNote");
     const clocks = [...document.querySelectorAll(".clock")];
+    const testTrigger = document.getElementById("testTrigger");
+    const testMenu = document.getElementById("testMenu");
+    const testButtons = [...testMenu.querySelectorAll("[data-test-state]")];
+
+    let testMode = "auto";
 
     function formatCountdown(ms){
       if(ms <= 0) return "OPEN";
@@ -379,12 +476,12 @@
       return `${String(hours).padStart(2,"0")}h ${String(mins).padStart(2,"0")}m ${String(secs).padStart(2,"0")}s`;
     }
 
-    function updateState(now){
-      if(now >= YES_AT){
+    function renderState(state){
+      if(state === "yes"){
         stateWord.textContent = "YES";
         stateWord.className = "state-word yes";
         stateNote.textContent = "Tickets are available.";
-      } else if(now >= MAYBE_AT){
+      } else if(state === "maybe"){
         stateWord.textContent = "MAYBE";
         stateWord.className = "state-word maybe";
         stateNote.textContent = "Depends on whether you're in the Guild or on the waitlist. Check the bar below for your specific ticket time.";
@@ -392,6 +489,21 @@
         stateWord.textContent = "NO";
         stateWord.className = "state-word no";
         stateNote.textContent = "";
+      }
+    }
+
+    function updateState(now){
+      if(testMode !== "auto"){
+        renderState(testMode);
+        return;
+      }
+
+      if(now >= YES_AT){
+        renderState("yes");
+      } else if(now >= MAYBE_AT){
+        renderState("maybe");
+      } else {
+        renderState("no");
       }
     }
 
@@ -409,6 +521,27 @@
       updateState(now);
       updateClocks(now);
     }
+
+    testTrigger.addEventListener("click", () => {
+      const open = !testMenu.classList.contains("show");
+      testMenu.classList.toggle("show", open);
+      testMenu.setAttribute("aria-hidden", String(!open));
+    });
+
+    testButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        testMode = button.dataset.testState;
+        testButtons.forEach(btn => btn.classList.toggle("active", btn === button));
+        update();
+      });
+    });
+
+    document.addEventListener("keydown", event => {
+      if(event.key === "Escape"){
+        testMenu.classList.remove("show");
+        testMenu.setAttribute("aria-hidden", "true");
+      }
+    });
 
     update();
     setInterval(update,1000);

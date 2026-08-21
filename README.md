@@ -35,3 +35,15 @@ The page is responsive:
 - Landscape: hero + one-row six-slot access bar
 - Portrait/tablet/mobile: portrait hero + 2×3 countdown grid
 - Very narrow phones: countdowns switch to a single column
+
+
+## Hidden test menu
+
+Click the first **O** in the large `JONABOT` booth sign to reveal a hidden test menu.
+
+- `AUTO` — uses the real ticket schedule
+- `NO` — previews the NO state
+- `MAYBE` — previews the MAYBE state and explanation
+- `YES` — previews the YES state
+
+The test menu changes only the main state display. The access countdowns continue to show the real live schedule.
