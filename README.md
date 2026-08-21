@@ -1,18 +1,19 @@
-# Phantom Peak Countdown
+# Phantom Peak Countdown — app icon update
 
-Final build with the hidden test menu removed.
+Upload these files/folders to the root of the existing GitHub Pages repository:
 
-Live timing logic:
-- Before 09:30 BST — NO
-- 09:30 to 12:29 BST — MAYBE
-- From 12:30 BST — YES
+- `index.html` — updated with favicon / PWA metadata
+- `manifest.webmanifest` — web-app manifest
+- `icons/` — favicon and home-screen icon set
 
-Access windows:
-- 09:30 — Guild Chroniclers with Ticket Packs
-- 09:50 — Guild Chroniclers
-- 09:55 — Guild Members
-- 10:00 — Guild Initiates
-- 11:00 — Early Waitlist
-- 12:30 — Everyone Else
+Keep the existing `Assets/` folder already in the repo.
 
-Each countdown switches to ACCESS OPEN at its target time and remains open.
+Included icon sizes:
+- 16×16 favicon
+- 32×32 favicon
+- 180×180 Apple touch icon
+- 192×192 Android/PWA icon
+- 512×512 Android/PWA icon
+- 512×512 maskable icon
+
+When someone uses "Add to Home screen", the app name will display as **Phantom Peak Countdown**.
