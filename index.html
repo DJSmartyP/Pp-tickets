@@ -332,107 +332,6 @@
       }
     }
 
-
-    .test-trigger{
-      position:absolute;
-      z-index:5;
-      appearance:none;
-      border:0;
-      background:transparent;
-      padding:0;
-      margin:0;
-      cursor:pointer;
-      opacity:0;
-    }
-
-    .test-menu{
-      position:absolute;
-      z-index:20;
-      display:none;
-      gap:8px;
-      padding:10px;
-      flex-direction:column;
-      border:1px solid rgba(201,151,63,.85);
-      background:rgba(8,11,12,.94);
-      box-shadow:0 8px 24px rgba(0,0,0,.45);
-      backdrop-filter:blur(4px);
-    }
-
-    .test-menu.show{display:flex}
-
-    .test-menu button{
-      appearance:none;
-      border:1px solid #8f7144;
-      background:#171b1c;
-      color:#ead9b8;
-      padding:6px 8px;
-      font:900 .7rem/1 Rockwell, "Courier New", serif;
-      letter-spacing:.05em;
-      text-transform:uppercase;
-      cursor:pointer;
-    }
-
-    .test-menu button.active{
-      border-color:#c9973f;
-      color:#fff1cf;
-      background:#3a2b18;
-    }
-
-
-    .test-section{
-      display:flex;
-      flex-wrap:wrap;
-      gap:5px;
-      align-items:center;
-    }
-
-    .test-label{
-      flex:0 0 100%;
-      color:#c9a76a;
-      font:900 .62rem/1 Rockwell, "Courier New", serif;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      margin-bottom:1px;
-    }
-
-    .test-divider{
-      height:1px;
-      background:rgba(201,151,63,.28);
-      width:100%;
-    }
-
-    @media (orientation: landscape){
-      /* First O in JONABOT */
-      .test-trigger{
-        left:40.5%;
-        top:5.1%;
-        width:5.2%;
-        height:10.5%;
-      }
-      .test-menu{
-        left:36%;
-        top:15%;
-      }
-    }
-
-    @media (orientation: portrait){
-      .test-trigger{
-        left:31.5%;
-        top:9.5%;
-        width:9%;
-        height:7.2%;
-      }
-      .test-menu{
-        left:50%;
-        top:17%;
-        transform:translateX(-50%);
-        flex-wrap:wrap;
-        justify-content:center;
-        width:max-content;
-        max-width:88%;
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -454,27 +353,6 @@
         <p id="stateNote" class="state-note"></p>
       </div>
 
-      <button
-        id="testTrigger"
-        class="test-trigger"
-        type="button"
-        aria-label="Open hidden state test menu"
-        title=""
-      ></button>
-
-      <div id="testMenu" class="test-menu" aria-hidden="true">
-        <div class="test-section">
-          <span class="test-label">Preview time</span>
-          <button type="button" data-test-time="auto" class="active">Auto</button>
-          <button type="button" data-test-time="closed">Closed</button>
-          <button type="button" data-test-time="0930">09:30</button>
-          <button type="button" data-test-time="0950">09:50</button>
-          <button type="button" data-test-time="0955">09:55</button>
-          <button type="button" data-test-time="1000">10:00</button>
-          <button type="button" data-test-time="1100">11:00</button>
-          <button type="button" data-test-time="1230">12:30</button>
-        </div>
-      </div>
     </section>
 
     <section class="countdown-zone" aria-labelledby="countdownTitle">
@@ -530,21 +408,6 @@
     const stateWord = document.getElementById("stateWord");
     const stateNote = document.getElementById("stateNote");
     const clocks = [...document.querySelectorAll(".clock")];
-    const testTrigger = document.getElementById("testTrigger");
-    const testMenu = document.getElementById("testMenu");
-    const testTimeButtons = [...testMenu.querySelectorAll("[data-test-time]")];
-
-    let testTimeMode = "auto";
-
-    const TEST_TIMES = {
-      "closed": Date.parse("2026-08-24T08:29:59Z"),
-      "0930": Date.parse("2026-08-24T08:30:01Z"),
-      "0950": Date.parse("2026-08-24T08:50:01Z"),
-      "0955": Date.parse("2026-08-24T08:55:01Z"),
-      "1000": Date.parse("2026-08-24T09:00:01Z"),
-      "1100": Date.parse("2026-08-24T10:00:01Z"),
-      "1230": Date.parse("2026-08-24T11:30:01Z")
-    };
 
     function formatCountdown(ms){
       if(ms <= 0) return "ACCESS OPEN";
@@ -613,35 +476,11 @@
     }
 
     function update(){
-      const realNow = Date.now();
-      const now = testTimeMode === "auto"
-        ? realNow
-        : TEST_TIMES[testTimeMode];
+      const now = Date.now();
 
       updateState(now);
       updateClocks(now);
     }
-
-    testTrigger.addEventListener("click", () => {
-      const open = !testMenu.classList.contains("show");
-      testMenu.classList.toggle("show", open);
-      testMenu.setAttribute("aria-hidden", String(!open));
-    });
-
-    testTimeButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        testTimeMode = button.dataset.testTime;
-        testTimeButtons.forEach(btn => btn.classList.toggle("active", btn === button));
-        update();
-      });
-    });
-
-    document.addEventListener("keydown", event => {
-      if(event.key === "Escape"){
-        testMenu.classList.remove("show");
-        testMenu.setAttribute("aria-hidden", "true");
-      }
-    });
 
     window.addEventListener("resize", fitStateWord);
     if (document.fonts && document.fonts.ready){
