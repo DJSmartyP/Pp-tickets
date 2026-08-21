@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can I Buy Phantom Peak Tickets Yet?</title>
+  <meta name="theme-color" content="#183f46">
+  <style>
+    :root {
+      --night: #111316;
+      --teal-dark: #163d43;
+      --teal: #23747a;
+      --purple: #68416f;
+      --purple-dark: #3f2949;
+      --cream: #f2dfb4;
+      --paper: #e7cf9b;
+      --gold: #d3a649;
+      --rust: #a54e32;
+      --green: #5f9663;
+      --ink: #251e20;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      overflow-x: hidden;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(104,65,111,.4), transparent 28rem),
+        radial-gradient(circle at 78% 80%, rgba(35,116,122,.28), transparent 30rem),
+        linear-gradient(160deg, #0b1112 0%, #17282a 48%, #110e14 100%);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 14px;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg,
+          var(--purple) 0 8%,
+          var(--teal) 8% 16%,
+          var(--gold) 16% 24%,
+          var(--rust) 24% 32%,
+          var(--purple) 32% 40%,
+          var(--teal) 40% 48%,
+          var(--gold) 48% 56%,
+          var(--rust) 56% 64%,
+          var(--purple) 64% 72%,
+          var(--teal) 72% 80%,
+          var(--gold) 80% 88%,
+          var(--rust) 88% 100%);
+      opacity: .88;
+    }
+
+    body::before { top: 0; }
+    body::after { bottom: 0; }
+
+    .lights {
+      position: fixed;
+      top: 22px;
+      left: 0;
+      width: 100%;
+      height: 55px;
+      pointer-events: none;
+      opacity: .8;
+      background:
+        radial-gradient(circle at 5% 5px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 15% 18px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 25% 7px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 35% 22px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 45% 10px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 55% 21px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 65% 8px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 75% 20px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 85% 7px, #ffe9a6 0 4px, transparent 5px),
+        radial-gradient(circle at 95% 18px, #ffe9a6 0 4px, transparent 5px);
+      filter: drop-shadow(0 0 7px #ffe7a1);
+    }
+
+    main {
+      width: min(920px, 100%);
+      text-align: center;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .sign {
+      position: relative;
+      margin: 0 auto;
+      padding: clamp(34px, 7vw, 68px) clamp(20px, 6vw, 62px);
+      border: 8px solid var(--purple-dark);
+      outline: 3px solid var(--gold);
+      outline-offset: -14px;
+      background:
+        linear-gradient(rgba(242,223,180,.93), rgba(231,207,155,.93)),
+        repeating-linear-gradient(
+          0deg,
+          rgba(80,48,25,.08) 0 2px,
+          transparent 2px 9px
+        );
+      color: var(--ink);
+      box-shadow:
+        0 20px 80px rgba(0,0,0,.55),
+        inset 0 0 0 4px rgba(255,255,255,.18);
+      clip-path: polygon(
+        4% 0, 96% 0,
+        100% 8%, 100% 92%,
+        96% 100%, 4% 100%,
+        0 92%, 0 8%
+      );
+    }
+
+    .sign::before,
+    .sign::after {
+      content: "✦";
+      position: absolute;
+      top: 16px;
+      color: var(--teal-dark);
+      font-size: 26px;
+    }
+    .sign::before { left: 25px; }
+    .sign::after { right: 25px; }
+
+    .kicker {
+      margin: 0 0 10px;
+      font-family: "Arial Narrow", Impact, sans-serif;
+      font-weight: 900;
+      font-size: clamp(.8rem, 2.5vw, 1.05rem);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--purple-dark);
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0 auto;
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(2rem, 7.8vw, 5.3rem);
+      line-height: .88;
+      text-transform: uppercase;
+      letter-spacing: -.035em;
+      color: var(--teal-dark);
+      text-shadow: 2px 2px 0 rgba(255,255,255,.35);
+    }
+
+    .rule {
+      width: min(380px, 70%);
+      height: 7px;
+      margin: 22px auto 18px;
+      background:
+        linear-gradient(90deg,
+          transparent,
+          var(--purple) 8% 44%,
+          var(--gold) 44% 56%,
+          var(--purple) 56% 92%,
+          transparent);
+      clip-path: polygon(0 40%, 42% 40%, 46% 0, 50% 40%, 54% 0, 58% 40%, 100% 40%, 100% 60%, 58% 60%, 54% 100%, 50% 60%, 46% 100%, 42% 60%, 0 60%);
+    }
+
+    .answer {
+      margin: 0;
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(6.7rem, 28vw, 17rem);
+      line-height: .72;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      transform: rotate(-1deg);
+      text-shadow:
+        .018em .018em 0 var(--cream),
+        .04em .04em 0 rgba(37,30,32,.18);
+      overflow-wrap: anywhere;
+    }
+
+    .answer.no { color: var(--rust); }
+    .answer.maybe {
+      color: var(--gold);
+      font-size: clamp(4rem, 16vw, 9rem);
+      line-height: .86;
+    }
+    .answer.yes { color: var(--green); }
+
+    .sub {
+      margin: 24px auto 0;
+      min-height: 1.6em;
+      max-width: 660px;
+      font-family: "Arial Narrow", Arial, sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.05rem, 3vw, 1.45rem);
+      letter-spacing: .03em;
+      color: var(--purple-dark);
+    }
+
+    .jonaco {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 8px 14px;
+      border: 2px solid var(--teal-dark);
+      color: var(--teal-dark);
+      font-family: "Arial Narrow", Arial, sans-serif;
+      font-weight: 900;
+      font-size: .73rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      transform: rotate(-2deg);
+      opacity: .74;
+    }
+
+    .footer {
+      margin: 24px 0 0;
+      font-family: Arial, sans-serif;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .62;
+    }
+
+    @media (max-width: 520px) {
+      .sign {
+        border-width: 5px;
+        outline-width: 2px;
+        outline-offset: -10px;
+      }
+
+      .sign::before,
+      .sign::after {
+        top: 12px;
+        font-size: 18px;
+      }
+
+      .sign::before { left: 17px; }
+      .sign::after { right: 17px; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .answer.yes {
+        animation: ticketTime .65s cubic-bezier(.16,.8,.28,1.18) both;
+      }
+
+      @keyframes ticketTime {
+        0% { transform: scale(.72) rotate(-7deg); opacity: 0; }
+        75% { transform: scale(1.06) rotate(1deg); }
+        100% { transform: scale(1) rotate(-1deg); opacity: 1; }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lights" aria-hidden="true"></div>
+
+  <main>
+    <section class="sign" aria-labelledby="question">
+      <p class="kicker">Phantom Peak Tourist Information</p>
+      <h1 id="question">Can I buy Phantom Peak tickets yet?</h1>
+      <div class="rule" aria-hidden="true"></div>
+
+      <div id="answer" class="answer no" aria-live="polite">NO</div>
+      <p id="sub" class="sub">Absolutely not.</p>
+
+      <div class="jonaco">Officially unofficial • Probably not JONACO approved</div>
+    </section>
+
+    <p class="footer">London time • This page knows what day it is so you don't have to</p>
+  </main>
+
+  <script>
+    // Monday 24 August 2026
+    // 09:30 Europe/London (BST) = 08:30 UTC
+    // 11:00 Europe/London (BST) = 10:00 UTC
+    const MAYBE_AT = Date.parse("2026-08-24T08:30:00Z");
+    const YES_AT   = Date.parse("2026-08-24T10:00:00Z");
+
+    const answer = document.getElementById("answer");
+    const sub = document.getElementById("sub");
+
+    function update() {
+      const now = Date.now();
+
+      if (now >= YES_AT) {
+        answer.textContent = "YES";
+        answer.className = "answer yes";
+        sub.textContent = "Tickets are on sale. Tourist, your time has come.";
+      } else if (now >= MAYBE_AT) {
+        answer.textContent = "MAYBE";
+        answer.className = "answer maybe";
+        sub.textContent = "Depends on your Guild level.";
+      } else {
+        answer.textContent = "NO";
+        answer.className = "answer no";
+        sub.textContent = "Absolutely not.";
+      }
+    }
+
+    update();
+    setInterval(update, 1000);
+  </script>
+</body>
+</html>
