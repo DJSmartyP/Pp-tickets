@@ -1,14 +1,25 @@
 # Can I Buy Phantom Peak Tickets Yet?
 
-Responsive Phantom Peak-inspired ticket release page.
+GitHub Pages-ready responsive ticket checker.
 
-Files:
-- `index.html` — the actual responsive site for GitHub Pages
-- `laptop.html` — laptop/desktop preview
-- `mobile.html` — forced mobile-layout preview
-- `assets/` — optimised Jonabit ticket-booth artwork
+## How it works
 
-Release windows for Monday 24 August 2026, London time:
+The page uses two fixed master artworks:
+- `Assets/booth-landscape.*` for landscape screens
+- `Assets/booth-portrait.*` for portrait screens
+
+HTML overlays only the live `NO`, `MAYBE`, or `YES` state into the blank parchment area, while the six countdown cards are fully live below the artwork.
+
+## Main state
+
+- Before 09:30 BST: **NO**
+- 09:30–12:29 BST: **MAYBE**
+  - Depends on whether you're in the Guild or on the waitlist.
+  - Check the bar below for your specific ticket time.
+- From 12:30 BST: **YES**
+
+## Ticket windows — Monday 24 August 2026
+
 - 09:30 — Guild Chroniclers with Ticket Packs
 - 09:50 — Guild Chroniclers
 - 09:55 — Guild Members
@@ -16,9 +27,11 @@ Release windows for Monday 24 August 2026, London time:
 - 11:00 — Early Waitlist
 - 12:30 — Everyone Else
 
-The main status changes:
-- before 09:30 — NO
-- 09:30 to 12:29 — MAYBE
-- from 12:30 — YES
+## GitHub Pages
 
-For GitHub Pages, upload the whole folder contents with `index.html` at repository root.
+Upload the contents of this ZIP to the root of the repository. Keep the `Assets` folder capitalised exactly as supplied.
+
+The page is responsive:
+- Landscape: hero + one-row six-slot access bar
+- Portrait/tablet/mobile: portrait hero + 2×3 countdown grid
+- Very narrow phones: countdowns switch to a single column

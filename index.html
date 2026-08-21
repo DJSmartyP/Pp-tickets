@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10262a">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120e0b">
   <title>Can I Buy Phantom Peak Tickets Yet?</title>
   <style>
     :root{
-      --ink:#111416;
+      --bg:#0b0b0c;
+      --panel:#111516;
       --cream:#ead9b8;
-      --paper:#ead8b3;
-      --paper2:#d7bd8e;
-      --teal:#0d5a60;
-      --teal2:#103f44;
-      --teal3:#0a2a2e;
       --gold:#c9973f;
-      --brass:#7c5a2c;
-      --purple:#64265f;
-      --purple2:#3e183a;
-      --orange:#bd6b34;
-      --green:#6ea574;
-      --red:#9a4038;
-      --panel:#0f1719;
-      --muted:#b6a98f;
+      --teal:#22989d;
+      --purple:#9d63aa;
+      --orange:#d1773d;
+      --green:#6fa677;
+      --red:#9b3f3b;
+      --ink:#241a16;
     }
 
     *{box-sizing:border-box}
@@ -30,7 +24,7 @@
     html,body{
       margin:0;
       min-height:100%;
-      background:#0d1719;
+      background:var(--bg);
       color:var(--cream);
       font-family:Arial, Helvetica, sans-serif;
     }
@@ -38,514 +32,386 @@
     body{
       min-height:100vh;
       background:
-        radial-gradient(circle at 50% -20%, rgba(160,105,48,.22), transparent 38rem),
-        linear-gradient(180deg,#16282b 0%,#0e1618 100%);
+        radial-gradient(circle at 50% -10%, rgba(140,88,36,.18), transparent 38rem),
+        #0a0b0c;
     }
 
-    .page{
-      min-height:100vh;
-      display:grid;
-      grid-template-columns:minmax(300px, 0.95fr) minmax(420px, 1.25fr) minmax(280px, .72fr);
-      gap:0;
-      border:10px solid #0b0f10;
-      box-shadow:inset 0 0 0 2px #654820;
+    main{
+      width:min(1800px,100%);
+      margin:0 auto;
+    }
+
+    .hero-wrap{
+      position:relative;
+      width:100%;
       overflow:hidden;
+      background:#090909;
     }
 
-    .booth{
-      position:relative;
-      min-height:100vh;
-      background:
-        linear-gradient(180deg, rgba(10,18,20,.04), rgba(10,18,20,.15)),
-        url("Assets/jonabit-booth.jpg") center/cover no-repeat;
-      border-right:5px solid #211710;
-      isolation:isolate;
+    .hero{
+      display:block;
+      width:100%;
+      height:auto;
     }
 
-    .booth::after{
-      content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(90deg,transparent 68%,rgba(7,12,13,.62) 100%);
-      pointer-events:none;
-    }
-
-    .tickets-plaque{
+    .state-overlay{
       position:absolute;
-      top:20px; left:18px; right:18px;
-      z-index:2;
-      padding:10px 16px 12px;
-      text-align:center;
-      color:#e6d6b5;
-      background:#161719;
-      border:4px solid #4f3820;
-      outline:2px solid #a17a39;
-      outline-offset:-8px;
-      font-family:Impact, "Arial Black", sans-serif;
-      font-size:clamp(2.1rem,5vw,4.8rem);
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      text-shadow:0 2px 0 #000;
-    }
-
-    .ticket-here{
-      position:absolute;
-      left:20px;
-      top:44%;
-      z-index:2;
-      padding:10px 12px;
-      background:#151719;
-      border:3px solid #634923;
-      color:#ddc9a3;
-      font-family:Impact, "Arial Black", sans-serif;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      box-shadow:0 8px 30px rgba(0,0,0,.4);
-    }
-
-    .center{
-      position:relative;
-      min-height:100vh;
-      padding:34px clamp(20px,3vw,46px);
       display:flex;
       flex-direction:column;
+      align-items:center;
       justify-content:center;
-      background:
-        radial-gradient(circle at 30% 10%, rgba(255,255,255,.18), transparent 28rem),
-        repeating-linear-gradient(0deg, rgba(70,46,20,.035) 0 2px, transparent 2px 8px),
-        linear-gradient(180deg,var(--paper) 0%,var(--paper2) 100%);
+      text-align:center;
       color:var(--ink);
-      border-right:5px solid #221811;
-      overflow:hidden;
-    }
-
-    .center::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      opacity:.18;
-      background:
-        radial-gradient(circle at 20% 25%, transparent 0 32%, rgba(55,40,22,.6) 33% 33.5%, transparent 34%),
-        radial-gradient(circle at 68% 64%, transparent 0 22%, rgba(55,40,22,.5) 23% 23.5%, transparent 24%);
       pointer-events:none;
+      padding:1.2rem;
     }
 
-    .brand-mark{
-      position:relative;
-      z-index:1;
-      text-align:center;
-      margin-bottom:12px;
-      color:var(--teal2);
+    .state-word{
+      margin:0;
+      font-family:Impact, "Arial Black", sans-serif;
+      font-size:clamp(4.6rem, 9vw, 10rem);
+      line-height:.78;
+      letter-spacing:.015em;
+      text-transform:uppercase;
+      text-shadow:0 .025em 0 rgba(255,255,255,.2);
+    }
+
+    .state-word.no{color:#8f3f39}
+    .state-word.maybe{
+      color:#5c2f62;
+      font-size:clamp(3.6rem, 7vw, 7.8rem);
+    }
+    .state-word.yes{color:#356b4c}
+
+    .state-note{
+      margin:.8rem 0 0;
+      max-width:34rem;
       font-family:Georgia, "Times New Roman", serif;
-      font-size:.85rem;
-      letter-spacing:.22em;
-      font-weight:bold;
-      text-transform:uppercase;
+      font-size:clamp(.95rem,1.55vw,1.55rem);
+      line-height:1.18;
+      font-weight:700;
     }
 
-    h1{
-      position:relative;
-      z-index:1;
-      margin:0 auto;
-      max-width:780px;
-      text-align:center;
-      font-family:Impact, "Arial Black", sans-serif;
-      font-size:clamp(2.8rem,5.7vw,6.8rem);
-      line-height:.88;
-      letter-spacing:.01em;
-      text-transform:uppercase;
-      color:#153f45;
-      text-shadow:
-        2px 2px 0 rgba(255,255,255,.3),
-        4px 4px 0 rgba(82,39,73,.16);
-    }
-
-    h1 .peak{
-      display:block;
-      color:#174f55;
-      text-shadow:
-        2px 2px 0 rgba(255,255,255,.24),
-        4px 4px 0 var(--purple2);
-    }
-
-    .ornament{
-      position:relative;
-      z-index:1;
-      width:min(430px,72%);
-      height:12px;
-      margin:20px auto;
-      background:linear-gradient(90deg,transparent,var(--teal2) 10% 43%,var(--purple) 43% 57%,var(--teal2) 57% 90%,transparent);
-      clip-path:polygon(0 40%,43% 40%,47% 0,50% 40%,53% 0,57% 40%,100% 40%,100% 60%,57% 60%,53% 100%,50% 60%,47% 100%,43% 60%,0 60%);
-    }
-
-    .answer-box{
-      position:relative;
-      z-index:1;
-      margin:0 auto;
-      width:min(860px,94%);
-      min-height:260px;
-      display:grid;
-      place-items:center;
-      padding:24px;
-      background:rgba(243,226,193,.45);
-      border:8px solid #19383b;
-      outline:2px solid #8e6a36;
-      outline-offset:-14px;
-      clip-path:polygon(4% 0,96% 0,100% 10%,100% 90%,96% 100%,4% 100%,0 90%,0 10%);
-      box-shadow:0 10px 0 rgba(79,50,24,.12);
-    }
-
-    .answer{
-      font-family:Impact, "Arial Black", sans-serif;
-      font-size:clamp(7rem,17vw,15rem);
-      line-height:.7;
-      letter-spacing:.01em;
-      text-transform:uppercase;
-      transform:rotate(-1deg);
-      text-shadow:3px 3px 0 rgba(255,255,255,.16);
-      overflow-wrap:anywhere;
-      text-align:center;
-    }
-
-    .answer.no{color:var(--purple)}
-    .answer.maybe{color:var(--gold); font-size:clamp(4rem,10vw,8rem); line-height:.9}
-    .answer.yes{color:var(--green)}
-
-    .sub{
-      position:relative;
-      z-index:1;
-      margin:18px auto 0;
-      max-width:760px;
-      text-align:center;
-      color:#45233f;
-      font-family:"Arial Narrow", Arial, sans-serif;
-      font-size:clamp(1rem,2vw,1.35rem);
-      font-weight:900;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-    }
-
-    .access{
-      min-height:100vh;
-      padding:24px 18px 18px;
+    .countdown-zone{
+      padding:14px 12px 18px;
       background:
-        linear-gradient(rgba(11,18,20,.98),rgba(10,14,16,.99)),
+        linear-gradient(rgba(10,14,15,.98),rgba(7,10,11,.99)),
         repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 2px,transparent 2px 8px);
-      color:var(--cream);
-      border-left:1px solid #a2742f;
-      box-shadow:inset 0 0 0 4px #1c2223,inset 0 0 0 6px #5c421f;
+      border-top:3px solid #6a4b24;
+      box-shadow:inset 0 1px 0 #b3833e;
     }
 
-    .access-title{
-      margin:0 0 4px;
+    .countdown-title{
+      margin:0 0 10px;
       text-align:center;
-      font-family:Impact, "Arial Black", sans-serif;
-      font-size:clamp(1.7rem,3vw,2.5rem);
-      letter-spacing:.05em;
-      text-transform:uppercase;
-      color:#e3cfab;
-    }
-
-    .access-sub{
-      margin:0 0 18px;
-      text-align:center;
-      color:#c6a872;
-      font-size:.72rem;
-      font-weight:800;
-      letter-spacing:.12em;
+      color:#c8a56a;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.14em;
       text-transform:uppercase;
     }
 
     .clock-list{
       display:grid;
-      gap:12px;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:8px;
     }
 
     .clock{
       position:relative;
-      min-height:145px;
-      padding:18px 16px 14px 92px;
-      border:3px solid currentColor;
-      background:rgba(13,20,22,.96);
-      box-shadow:inset 0 0 0 2px rgba(255,255,255,.035);
-      color:#8b6d42;
+      min-width:0;
+      padding:12px 10px 10px;
+      border:2px solid currentColor;
+      background:rgba(14,20,21,.95);
+      text-align:center;
+      color:#8d7148;
     }
 
-    .clock.chroniclers{color:#1c9ca1}
-    .clock.members{color:#c9983e}
-    .clock.initiates{color:#8a4c93}
-    .clock.waitlist{color:#6c8f5a}
-    .clock.public{color:#b76b39}
-    .clock.open{background:rgba(25,50,35,.82)}
-
-    .badge{
-      position:absolute;
-      left:18px;
-      top:50%;
-      width:54px;
-      height:54px;
-      border:3px solid currentColor;
-      border-radius:50%;
-      transform:translateY(-50%);
-      display:grid;
-      place-items:center;
-      font-size:1.5rem;
-      font-weight:900;
+    .clock.chroniclers{color:var(--teal)}
+    .clock.members{color:var(--gold)}
+    .clock.initiates{color:var(--purple)}
+    .clock.waitlist{color:var(--orange)}
+    .clock.public{color:#c95d45}
+    .clock.open{
+      background:rgba(31,62,42,.55);
+      box-shadow:inset 0 0 0 1px rgba(111,166,119,.22);
     }
 
     .clock-time{
       display:block;
-      color:#e7d6b6;
+      color:#efe0bf;
       font-family:Impact, "Arial Black", sans-serif;
-      font-size:2.25rem;
+      font-size:clamp(1.35rem,2.2vw,2.2rem);
       line-height:.9;
       letter-spacing:.04em;
     }
 
     .clock-name{
       display:block;
-      margin-top:4px;
+      margin-top:5px;
+      min-height:2.25em;
       color:currentColor;
-      font-family:Impact, "Arial Black", sans-serif;
-      font-size:1.03rem;
-      line-height:1;
+      font-family:"Arial Narrow", Arial, sans-serif;
+      font-size:clamp(.68rem,.9vw,.95rem);
+      line-height:1.08;
+      font-weight:900;
       text-transform:uppercase;
     }
 
     .clock-countdown{
       display:block;
-      margin-top:13px;
-      color:currentColor;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size:1rem;
-      font-weight:900;
-      letter-spacing:.05em;
-      text-transform:uppercase;
+      margin-top:8px;
+      color:#efe3c9;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:clamp(.62rem,.76vw,.84rem);
+      line-height:1.15;
+      font-weight:800;
+      white-space:nowrap;
     }
 
     .clock.open .clock-countdown{
-      color:#92c79a;
+      color:#9ed1a5;
       font-family:Impact, "Arial Black", sans-serif;
-      font-size:1.15rem;
-      letter-spacing:.12em;
+      letter-spacing:.08em;
     }
 
     .timezone{
-      margin:15px 0 0;
+      margin:10px 0 0;
       text-align:center;
-      color:#8f846f;
+      color:#877a64;
       font-size:.67rem;
       letter-spacing:.08em;
       text-transform:uppercase;
     }
 
-    /* Laptop optimisation */
-    @media (max-width: 1280px){
-      .page{
-        grid-template-columns:minmax(260px,.8fr) minmax(420px,1.35fr) minmax(265px,.75fr);
+    /* Landscape master: overlay sits in blank lower 2/3 of parchment */
+    @media (orientation: landscape){
+      .state-overlay{
+        left:41.2%;
+        top:51.2%;
+        width:34.6%;
+        height:25.2%;
       }
-      .tickets-plaque{font-size:clamp(2rem,4vw,3.5rem)}
-      .clock{padding-left:76px}
-      .badge{left:12px;width:46px;height:46px;font-size:1.2rem}
-      .clock-time{font-size:1.9rem}
-      .clock-name{font-size:.9rem}
-      .clock-countdown{font-size:.87rem}
     }
 
-    /* Tablet */
-    @media (max-width: 980px){
-      .page{
-        grid-template-columns:42% 58%;
-        grid-template-areas:
-          "booth center"
-          "access access";
+    /* Portrait master */
+    @media (orientation: portrait){
+      .state-overlay{
+        left:19%;
+        top:67%;
+        width:62%;
+        height:18%;
+        padding:.7rem;
       }
-      .booth{grid-area:booth;min-height:650px}
-      .center{grid-area:center;min-height:650px}
-      .access{grid-area:access;min-height:auto}
-      .clock-list{grid-template-columns:repeat(2,minmax(0,1fr))}
-    }
 
-    /* Mobile */
-    @media (max-width: 680px){
-      .page{
-        display:block;
-        border-width:6px;
+      .state-word{
+        font-size:clamp(4.4rem,20vw,8.5rem);
       }
-      .booth{
-        min-height:330px;
-        background-image:
-          linear-gradient(180deg, rgba(10,18,20,.02), rgba(10,18,20,.08)),
-          url("Assets/jonabit-booth-mobile.jpg");
-        background-position:center 24%;
+
+      .state-word.maybe{
+        font-size:clamp(3.2rem,14vw,6.2rem);
       }
-      .booth::after{
-        background:linear-gradient(180deg,transparent 66%,rgba(7,12,13,.78) 100%);
+
+      .state-note{
+        max-width:26rem;
+        font-size:clamp(.82rem,3.4vw,1.35rem);
       }
-      .tickets-plaque{
-        left:12px;right:12px;top:12px;
-        padding:7px 10px 9px;
-        font-size:2.15rem;
+
+      .countdown-zone{
+        padding:12px 10px 16px;
       }
-      .ticket-here{
-        top:auto;left:12px;bottom:14px;
-        font-size:.78rem;
-        padding:7px 9px;
+
+      .clock-list{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:7px;
       }
-      .center{
-        min-height:auto;
-        padding:28px 14px 30px;
-        border-right:0;
-        border-top:5px solid #221811;
-        border-bottom:5px solid #221811;
-      }
-      h1{font-size:clamp(2.3rem,11vw,4.5rem)}
-      .answer-box{
-        min-height:180px;
-        border-width:6px;
-        outline-offset:-11px;
-      }
-      .answer{font-size:clamp(6rem,30vw,10rem)}
-      .answer.maybe{font-size:clamp(3.5rem,17vw,6rem)}
-      .access{
-        min-height:auto;
-        padding:22px 12px 16px;
-      }
-      .clock-list{grid-template-columns:1fr}
+
       .clock{
-        min-height:120px;
-        padding:15px 14px 13px 80px;
+        padding:11px 8px 9px;
       }
-      .badge{left:14px;width:48px;height:48px}
-      .clock-time{font-size:2rem}
-      .clock-name{font-size:.95rem}
-      .clock-countdown{font-size:.92rem}
+
+      .clock-time{
+        font-size:clamp(1.6rem,7vw,2.4rem);
+      }
+
+      .clock-name{
+        min-height:0;
+        font-size:clamp(.72rem,3vw,1rem);
+      }
+
+      .clock-countdown{
+        font-size:clamp(.67rem,2.7vw,.9rem);
+      }
+    }
+
+    @media (max-width:390px) and (orientation:portrait){
+      .state-overlay{
+        left:17%;
+        width:66%;
+      }
+
+      .state-note{
+        font-size:.79rem;
+      }
+
+      .clock-list{
+        grid-template-columns:1fr;
+      }
+
+      .clock{
+        display:grid;
+        grid-template-columns:66px 1fr;
+        grid-template-rows:auto auto;
+        align-items:center;
+        text-align:left;
+        column-gap:9px;
+      }
+
+      .clock-time{
+        grid-row:1 / span 2;
+        align-self:center;
+      }
+
+      .clock-name,
+      .clock-countdown{
+        margin-top:0;
+      }
     }
 
     @media (prefers-reduced-motion:no-preference){
-      .answer.yes{animation:pop .5s cubic-bezier(.2,.85,.2,1.15) both}
+      .state-word.yes{
+        animation:pop .5s cubic-bezier(.2,.85,.2,1.15) both;
+      }
       @keyframes pop{
-        from{transform:scale(.75) rotate(-5deg);opacity:.1}
-        to{transform:scale(1) rotate(-1deg);opacity:1}
+        from{transform:scale(.8);opacity:.15}
+        to{transform:scale(1);opacity:1}
       }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="booth" aria-label="Jonabit at the Phantom Peak ticket booth">
-    </section>
+  <main>
+    <section class="hero-wrap" aria-label="Jonabot ticket office">
+      <picture>
+        <source media="(orientation: portrait)" srcset="Assets/booth-portrait.webp" type="image/webp">
+        <source media="(orientation: portrait)" srcset="Assets/booth-portrait.jpg">
+        <source srcset="Assets/booth-landscape.webp" type="image/webp">
+        <img
+          class="hero"
+          src="Assets/booth-landscape.jpg"
+          alt="Jonabot standing in a steampunk Phantom Peak ticket office beside a large parchment ticket sign."
+        >
+      </picture>
 
-    <section class="center" aria-labelledby="question">
-      <div class="brand-mark">Phantom Peak Tourist Information</div>
-      <h1 id="question">Can I buy <span class="peak">Phantom Peak</span> tickets yet?</h1>
-      <div class="ornament" aria-hidden="true"></div>
-
-      <div class="answer-box">
-        <div id="answer" class="answer no" aria-live="polite">NO</div>
+      <div class="state-overlay" aria-live="polite">
+        <div id="stateWord" class="state-word no">NO</div>
+        <p id="stateNote" class="state-note"></p>
       </div>
-
-      <p id="sub" class="sub">Absolutely not.</p>
     </section>
 
-    <aside class="access" aria-labelledby="access-title">
-      <h2 class="access-title" id="access-title">Access Windows</h2>
-      <p class="access-sub">Countdown to each release</p>
+    <section class="countdown-zone" aria-labelledby="countdownTitle">
+      <h2 class="countdown-title" id="countdownTitle">Your ticket access time</h2>
 
       <div class="clock-list">
-        <div class="clock chroniclers" data-target="2026-08-24T08:30:00Z">
-          <div class="badge">✦</div>
+        <article class="clock chroniclers" data-target="2026-08-24T08:30:00Z">
           <span class="clock-time">09:30</span>
           <span class="clock-name">Guild Chroniclers with Ticket Packs</span>
           <span class="clock-countdown">Calculating…</span>
-        </div>
+        </article>
 
-        <div class="clock chroniclers" data-target="2026-08-24T08:50:00Z">
-          <div class="badge">✦</div>
+        <article class="clock chroniclers" data-target="2026-08-24T08:50:00Z">
           <span class="clock-time">09:50</span>
           <span class="clock-name">Guild Chroniclers</span>
           <span class="clock-countdown">Calculating…</span>
-        </div>
+        </article>
 
-        <div class="clock members" data-target="2026-08-24T08:55:00Z">
-          <div class="badge">★</div>
+        <article class="clock members" data-target="2026-08-24T08:55:00Z">
           <span class="clock-time">09:55</span>
           <span class="clock-name">Guild Members</span>
           <span class="clock-countdown">Calculating…</span>
-        </div>
+        </article>
 
-        <div class="clock initiates" data-target="2026-08-24T09:00:00Z">
-          <div class="badge">◆</div>
+        <article class="clock initiates" data-target="2026-08-24T09:00:00Z">
           <span class="clock-time">10:00</span>
           <span class="clock-name">Guild Initiates</span>
           <span class="clock-countdown">Calculating…</span>
-        </div>
+        </article>
 
-        <div class="clock waitlist" data-target="2026-08-24T10:00:00Z">
-          <div class="badge">◈</div>
+        <article class="clock waitlist" data-target="2026-08-24T10:00:00Z">
           <span class="clock-time">11:00</span>
           <span class="clock-name">Early Waitlist</span>
           <span class="clock-countdown">Calculating…</span>
-        </div>
+        </article>
 
-        <div class="clock public" data-target="2026-08-24T11:30:00Z">
-          <div class="badge">●</div>
+        <article class="clock public" data-target="2026-08-24T11:30:00Z">
           <span class="clock-time">12:30</span>
           <span class="clock-name">Everyone Else</span>
           <span class="clock-countdown">Calculating…</span>
-        </div>
+        </article>
       </div>
 
-      <p class="timezone">All release times shown in London time</p>
-    </aside>
+      <p class="timezone">All access times are London time • Monday 24 August 2026</p>
+    </section>
   </main>
 
   <script>
-    const MAYBE_AT = Date.parse("2026-08-24T08:30:00Z");
-    const YES_AT   = Date.parse("2026-08-24T11:30:00Z");
+    // Monday 24 August 2026 is on British Summer Time (UTC+1).
+    const MAYBE_AT = Date.parse("2026-08-24T08:30:00Z"); // 09:30 BST
+    const YES_AT   = Date.parse("2026-08-24T11:30:00Z"); // 12:30 BST
 
-    const answer = document.getElementById("answer");
-    const sub = document.getElementById("sub");
+    const stateWord = document.getElementById("stateWord");
+    const stateNote = document.getElementById("stateNote");
     const clocks = [...document.querySelectorAll(".clock")];
 
     function formatCountdown(ms){
-      if(ms <= 0) return "OPEN NOW";
+      if(ms <= 0) return "OPEN";
 
       const total = Math.floor(ms / 1000);
-      const d = Math.floor(total / 86400);
-      const h = Math.floor((total % 86400) / 3600);
-      const m = Math.floor((total % 3600) / 60);
-      const s = total % 60;
+      const days = Math.floor(total / 86400);
+      const hours = Math.floor((total % 86400) / 3600);
+      const mins = Math.floor((total % 3600) / 60);
+      const secs = total % 60;
 
-      if(d > 0) return `${d}D ${String(h).padStart(2,"0")}H ${String(m).padStart(2,"0")}M ${String(s).padStart(2,"0")}S`;
-      return `${String(h).padStart(2,"0")}H ${String(m).padStart(2,"0")}M ${String(s).padStart(2,"0")}S`;
+      if(days > 0){
+        return `${days}d ${String(hours).padStart(2,"0")}h ${String(mins).padStart(2,"0")}m ${String(secs).padStart(2,"0")}s`;
+      }
+      return `${String(hours).padStart(2,"0")}h ${String(mins).padStart(2,"0")}m ${String(secs).padStart(2,"0")}s`;
     }
 
-    function update(){
-      const now = Date.now();
-
+    function updateState(now){
       if(now >= YES_AT){
-        answer.textContent = "YES";
-        answer.className = "answer yes";
-        sub.textContent = "Tickets are on sale for everyone. Adventure awaits.";
-      }else if(now >= MAYBE_AT){
-        answer.textContent = "MAYBE";
-        answer.className = "answer maybe";
-        sub.textContent = "Depends on your Guild level. Check the access windows.";
-      }else{
-        answer.textContent = "NO";
-        answer.className = "answer no";
-        sub.textContent = "Absolutely not.";
+        stateWord.textContent = "YES";
+        stateWord.className = "state-word yes";
+        stateNote.textContent = "Tickets are available.";
+      } else if(now >= MAYBE_AT){
+        stateWord.textContent = "MAYBE";
+        stateWord.className = "state-word maybe";
+        stateNote.textContent = "Depends on whether you're in the Guild or on the waitlist. Check the bar below for your specific ticket time.";
+      } else {
+        stateWord.textContent = "NO";
+        stateWord.className = "state-word no";
+        stateNote.textContent = "";
       }
+    }
 
+    function updateClocks(now){
       clocks.forEach(clock => {
-        const remaining = Date.parse(clock.dataset.target) - now;
+        const target = Date.parse(clock.dataset.target);
+        const remaining = target - now;
         clock.querySelector(".clock-countdown").textContent = formatCountdown(remaining);
         clock.classList.toggle("open", remaining <= 0);
       });
     }
 
+    function update(){
+      const now = Date.now();
+      updateState(now);
+      updateClocks(now);
+    }
+
     update();
-    setInterval(update, 1000);
+    setInterval(update,1000);
   </script>
 </body>
 </html>
