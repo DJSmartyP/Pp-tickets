@@ -139,8 +139,20 @@
     .clock.waitlist{color:var(--orange)}
     .clock.public{color:#c95d45}
     .clock.open{
-      background:rgba(31,62,42,.55);
-      box-shadow:inset 0 0 0 1px rgba(111,166,119,.22);
+      background:
+        linear-gradient(rgba(31,62,42,.78),rgba(19,44,28,.82)),
+        rgba(31,62,42,.55);
+      box-shadow:
+        inset 0 0 0 1px rgba(111,166,119,.32),
+        inset 0 0 28px rgba(111,166,119,.10);
+    }
+
+    .clock.open .clock-time{
+      color:#dff0d8;
+    }
+
+    .clock.open .clock-name{
+      color:#c7e2c8;
     }
 
     .clock-time{
@@ -176,9 +188,20 @@
     }
 
     .clock.open .clock-countdown{
-      color:#9ed1a5;
-      font-family:Impact, "Arial Black", sans-serif;
+      display:inline-block;
+      margin-top:9px;
+      padding:6px 10px 5px;
+      border:2px solid #9ed1a5;
+      color:#c7efc9;
+      background:rgba(6,20,10,.34);
+      font-family:"Rockwell Extra Bold", Rockwell, "Roboto Slab", "Courier New", serif;
+      font-size:clamp(.72rem,.95vw,1rem);
+      font-weight:900;
+      line-height:1;
       letter-spacing:.08em;
+      text-transform:uppercase;
+      transform:rotate(-2deg);
+      box-shadow:inset 0 0 0 1px rgba(158,209,165,.12);
     }
 
     .timezone{
@@ -314,8 +337,9 @@
       position:absolute;
       z-index:20;
       display:none;
-      gap:6px;
-      padding:8px;
+      gap:8px;
+      padding:10px;
+      flex-direction:column;
       border:1px solid rgba(201,151,63,.85);
       background:rgba(8,11,12,.94);
       box-shadow:0 8px 24px rgba(0,0,0,.45);
@@ -340,6 +364,29 @@
       border-color:#c9973f;
       color:#fff1cf;
       background:#3a2b18;
+    }
+
+
+    .test-section{
+      display:flex;
+      flex-wrap:wrap;
+      gap:5px;
+      align-items:center;
+    }
+
+    .test-label{
+      flex:0 0 100%;
+      color:#c9a76a;
+      font:700 .62rem/1 Arial,sans-serif;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      margin-bottom:1px;
+    }
+
+    .test-divider{
+      height:1px;
+      background:rgba(201,151,63,.28);
+      width:100%;
     }
 
     @media (orientation: landscape){
@@ -404,10 +451,17 @@
       ></button>
 
       <div id="testMenu" class="test-menu" aria-hidden="true">
-        <button type="button" data-test-state="auto" class="active">Auto</button>
-        <button type="button" data-test-state="no">No</button>
-        <button type="button" data-test-state="maybe">Maybe</button>
-        <button type="button" data-test-state="yes">Yes</button>
+        <div class="test-section">
+          <span class="test-label">Preview time</span>
+          <button type="button" data-test-time="auto" class="active">Auto</button>
+          <button type="button" data-test-time="closed">Closed</button>
+          <button type="button" data-test-time="0930">09:30</button>
+          <button type="button" data-test-time="0950">09:50</button>
+          <button type="button" data-test-time="0955">09:55</button>
+          <button type="button" data-test-time="1000">10:00</button>
+          <button type="button" data-test-time="1100">11:00</button>
+          <button type="button" data-test-time="1230">12:30</button>
+        </div>
       </div>
     </section>
 
@@ -466,12 +520,22 @@
     const clocks = [...document.querySelectorAll(".clock")];
     const testTrigger = document.getElementById("testTrigger");
     const testMenu = document.getElementById("testMenu");
-    const testButtons = [...testMenu.querySelectorAll("[data-test-state]")];
+    const testTimeButtons = [...testMenu.querySelectorAll("[data-test-time]")];
 
-    let testMode = "auto";
+    let testTimeMode = "auto";
+
+    const TEST_TIMES = {
+      "closed": Date.parse("2026-08-24T08:29:59Z"),
+      "0930": Date.parse("2026-08-24T08:30:01Z"),
+      "0950": Date.parse("2026-08-24T08:50:01Z"),
+      "0955": Date.parse("2026-08-24T08:55:01Z"),
+      "1000": Date.parse("2026-08-24T09:00:01Z"),
+      "1100": Date.parse("2026-08-24T10:00:01Z"),
+      "1230": Date.parse("2026-08-24T11:30:01Z")
+    };
 
     function formatCountdown(ms){
-      if(ms <= 0) return "OPEN";
+      if(ms <= 0) return "ACCESS OPEN";
 
       const total = Math.floor(ms / 1000);
       const days = Math.floor(total / 86400);
@@ -502,11 +566,6 @@
     }
 
     function updateState(now){
-      if(testMode !== "auto"){
-        renderState(testMode);
-        return;
-      }
-
       if(now >= YES_AT){
         renderState("yes");
       } else if(now >= MAYBE_AT){
@@ -526,7 +585,11 @@
     }
 
     function update(){
-      const now = Date.now();
+      const realNow = Date.now();
+      const now = testTimeMode === "auto"
+        ? realNow
+        : TEST_TIMES[testTimeMode];
+
       updateState(now);
       updateClocks(now);
     }
@@ -537,10 +600,10 @@
       testMenu.setAttribute("aria-hidden", String(!open));
     });
 
-    testButtons.forEach(button => {
+    testTimeButtons.forEach(button => {
       button.addEventListener("click", () => {
-        testMode = button.dataset.testState;
-        testButtons.forEach(btn => btn.classList.toggle("active", btn === button));
+        testTimeMode = button.dataset.testTime;
+        testTimeButtons.forEach(btn => btn.classList.toggle("active", btn === button));
         update();
       });
     });

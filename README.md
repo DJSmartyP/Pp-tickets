@@ -47,3 +47,48 @@ Click the first **O** in the large `JONABOT` booth sign to reveal a hidden test 
 - `YES` — previews the YES state
 
 The test menu changes only the main state display. The access countdowns continue to show the real live schedule.
+
+
+## Open-state behaviour
+
+When an access window reaches zero:
+- that card gets a stronger green open-state treatment;
+- the countdown disappears;
+- it is replaced by a large Western-style **ACCESS OPEN** stamp;
+- the original category border colour is retained.
+
+
+## Access-window test controls
+
+The hidden JONABOT menu now also includes an **Access windows** test row.
+
+- `AUTO` — real live countdown behaviour
+- `09:30` — previews the page immediately after the first access window opens
+- `09:50` — first two windows are open
+- `09:55` — first three windows are open
+- `10:00` — first four windows are open
+- `11:00` — first five windows are open
+- `12:30` — all six windows are open
+
+The main-sign test and access-window test work independently, so any combination can be previewed.
+
+
+## Simplified hidden test menu
+
+The hidden menu now has one set of preview times only:
+
+- `AUTO`
+- `09:30`
+- `09:50`
+- `09:55`
+- `10:00`
+- `11:00`
+- `12:30`
+
+Selecting a preview time drives the entire page from that simulated time. It updates both:
+- the main `NO / MAYBE / YES` sign;
+- which access cards have reached `ACCESS OPEN`.
+
+`AUTO` returns the page to the real live clock.
+
+- `CLOSED` previews the page immediately before 09:30: main sign **NO**, with all six access windows still counting down/closed.
