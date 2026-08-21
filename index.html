@@ -92,10 +92,135 @@
     }
 
     main {
-      width: min(920px, 100%);
-      text-align: center;
+      width: min(1180px, 100%);
       position: relative;
       isolation: isolate;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero {
+      text-align: center;
+      min-width: 0;
+    }
+
+    .countdown-board {
+      position: relative;
+      padding: 24px 18px 20px;
+      border: 5px solid var(--purple-dark);
+      outline: 2px solid var(--gold);
+      outline-offset: -10px;
+      background:
+        linear-gradient(rgba(22,61,67,.97), rgba(25,48,51,.97)),
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,.03) 0 2px,
+          transparent 2px 8px
+        );
+      box-shadow: 0 20px 60px rgba(0,0,0,.42);
+      clip-path: polygon(
+        5% 0, 95% 0,
+        100% 5%, 100% 95%,
+        95% 100%, 5% 100%,
+        0 95%, 0 5%
+      );
+    }
+
+    .countdown-board::before,
+    .countdown-board::after {
+      content: "◆";
+      position: absolute;
+      top: 12px;
+      color: var(--gold);
+      font-size: 13px;
+      opacity: .9;
+    }
+
+    .countdown-board::before { left: 15px; }
+    .countdown-board::after { right: 15px; }
+
+    .board-kicker {
+      margin: 3px 0 5px;
+      color: var(--gold);
+      font-family: "Arial Narrow", Arial, sans-serif;
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .board-title {
+      margin: 0 0 18px;
+      color: var(--cream);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 1.55rem;
+      line-height: .92;
+      text-transform: uppercase;
+    }
+
+    .clock-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .clock {
+      padding: 13px 12px 12px;
+      border: 2px solid rgba(242,223,180,.38);
+      background: rgba(17,19,22,.26);
+      text-align: left;
+    }
+
+    .clock.open {
+      border-color: var(--gold);
+      background: rgba(211,166,73,.12);
+    }
+
+    .clock-time {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--gold);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: .03em;
+    }
+
+    .clock-name {
+      display: block;
+      color: var(--cream);
+      font-family: "Arial Narrow", Arial, sans-serif;
+      font-size: .94rem;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .clock-countdown {
+      display: block;
+      margin-top: 8px;
+      color: #fff4d6;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .clock.open .clock-countdown {
+      color: #bfe8c3;
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: .95rem;
+      letter-spacing: .08em;
+    }
+
+    .board-note {
+      margin: 16px 4px 0;
+      color: rgba(242,223,180,.68);
+      font-family: Arial, sans-serif;
+      font-size: .7rem;
+      line-height: 1.35;
     }
 
     .sign {
@@ -228,7 +353,25 @@
       opacity: .62;
     }
 
+    @media (max-width: 850px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown-board {
+        width: min(620px, 100%);
+        margin: 0 auto;
+      }
+
+      .clock-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 520px) {
+      .clock-list {
+        grid-template-columns: 1fr;
+      }
       .sign {
         border-width: 5px;
         outline-width: 2px;
@@ -262,33 +405,83 @@
   <div class="lights" aria-hidden="true"></div>
 
   <main>
-    <section class="sign" aria-labelledby="question">
-      <p class="kicker">Phantom Peak Tourist Information</p>
-      <h1 id="question">Can I buy Phantom Peak tickets yet?</h1>
-      <div class="rule" aria-hidden="true"></div>
+    <div class="layout">
+      <div class="hero">
+        <section class="sign" aria-labelledby="question">
+          <p class="kicker">Phantom Peak Tourist Information</p>
+          <h1 id="question">Can I buy Phantom Peak tickets yet?</h1>
+          <div class="rule" aria-hidden="true"></div>
 
-      <div id="answer" class="answer no" aria-live="polite">NO</div>
-      <p id="sub" class="sub">Absolutely not.</p>
+          <div id="answer" class="answer no" aria-live="polite">NO</div>
+          <p id="sub" class="sub">Absolutely not.</p>
 
-      <div class="jonaco">Officially unofficial • Probably not JONACO approved</div>
-    </section>
+          <div class="jonaco">Officially unofficial • Probably not JONACO approved</div>
+        </section>
 
-    <p class="footer">London time • This page knows what day it is so you don't have to</p>
+        <p class="footer">London time • This page knows what day it is so you don't have to</p>
+      </div>
+
+      <aside class="countdown-board" aria-labelledby="access-title">
+        <p class="board-kicker">Ticket Access Telegraph</p>
+        <h2 class="board-title" id="access-title">When can I get in?</h2>
+
+        <div class="clock-list">
+          <div class="clock" data-target="2026-08-24T08:30:00Z">
+            <span class="clock-time">09:30</span>
+            <span class="clock-name">Guild Chroniclers</span>
+            <span class="clock-countdown" aria-live="off">Calculating…</span>
+          </div>
+
+          <div class="clock" data-target="2026-08-24T08:55:00Z">
+            <span class="clock-time">09:55</span>
+            <span class="clock-name">Guild Members</span>
+            <span class="clock-countdown" aria-live="off">Calculating…</span>
+          </div>
+
+          <div class="clock" data-target="2026-08-24T09:00:00Z">
+            <span class="clock-time">10:00</span>
+            <span class="clock-name">Guild Initiates</span>
+            <span class="clock-countdown" aria-live="off">Calculating…</span>
+          </div>
+
+          <div class="clock" data-target="2026-08-24T10:00:00Z">
+            <span class="clock-time">11:00</span>
+            <span class="clock-name">General Public</span>
+            <span class="clock-countdown" aria-live="off">Calculating…</span>
+          </div>
+        </div>
+
+        <p class="board-note">All times are London time. The countdown is calculated from the viewer's device, but every gate opens at the same real-world moment.</p>
+      </aside>
+    </div>
   </main>
 
   <script>
-    // Monday 24 August 2026
-    // 09:30 Europe/London (BST) = 08:30 UTC
-    // 11:00 Europe/London (BST) = 10:00 UTC
-    const MAYBE_AT = Date.parse("2026-08-24T08:30:00Z");
-    const YES_AT   = Date.parse("2026-08-24T10:00:00Z");
+    // Monday 24 August 2026, London time (BST / UTC+1)
+    const MAYBE_AT = Date.parse("2026-08-24T08:30:00Z"); // 09:30 Chroniclers
+    const YES_AT   = Date.parse("2026-08-24T10:00:00Z"); // 11:00 General Public
 
     const answer = document.getElementById("answer");
     const sub = document.getElementById("sub");
+    const clocks = [...document.querySelectorAll(".clock")];
 
-    function update() {
-      const now = Date.now();
+    function formatCountdown(ms) {
+      if (ms <= 0) return "OPEN";
 
+      const totalSeconds = Math.floor(ms / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      if (days > 0) {
+        return `${days}d ${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+      }
+
+      return `${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+    }
+
+    function updateMain(now) {
       if (now >= YES_AT) {
         answer.textContent = "YES";
         answer.className = "answer yes";
@@ -296,12 +489,29 @@
       } else if (now >= MAYBE_AT) {
         answer.textContent = "MAYBE";
         answer.className = "answer maybe";
-        sub.textContent = "Depends on your Guild level.";
+        sub.textContent = "Depends on your Guild level. Check the access board.";
       } else {
         answer.textContent = "NO";
         answer.className = "answer no";
         sub.textContent = "Absolutely not.";
       }
+    }
+
+    function updateClocks(now) {
+      clocks.forEach(clock => {
+        const target = Date.parse(clock.dataset.target);
+        const remaining = target - now;
+        const output = clock.querySelector(".clock-countdown");
+
+        output.textContent = formatCountdown(remaining);
+        clock.classList.toggle("open", remaining <= 0);
+      });
+    }
+
+    function update() {
+      const now = Date.now();
+      updateMain(now);
+      updateClocks(now);
     }
 
     update();
