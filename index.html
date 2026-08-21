@@ -68,15 +68,20 @@
 
     .state-word{
       margin:0;
-      font-family:Impact, "Arial Black", sans-serif;
-      font-size:clamp(4.6rem, 9vw, 10rem);
+      font-family:"Rockwell Extra Bold", Rockwell, "Roboto Slab", "Courier New", serif;
+      font-size:clamp(5.2rem, 10.5vw, 12rem);
+      font-weight:900;
       line-height:.78;
       letter-spacing:.015em;
       text-transform:uppercase;
       text-shadow:0 .025em 0 rgba(255,255,255,.2);
     }
 
-    .state-word.no{color:#8f3f39}
+    .state-word.no{
+      color:#8f3f39;
+      font-size:clamp(6.8rem, 14vw, 15rem);
+      letter-spacing:.035em;
+    }
     .state-word.maybe{
       color:#5c2f62;
       font-size:clamp(3.6rem, 7vw, 7.8rem);
@@ -207,6 +212,10 @@
 
       .state-word{
         font-size:clamp(4.4rem,20vw,8.5rem);
+      }
+
+      .state-word.no{
+        font-size:clamp(6.4rem,29vw,12rem);
       }
 
       .state-word.maybe{
