@@ -1,14 +1,24 @@
 # Can I Buy Phantom Peak Tickets Yet?
 
-Phantom Peak-inspired joke ticket checker with four live access countdowns.
+Responsive Phantom Peak-inspired ticket release page.
 
-Monday 24 August 2026, London time:
-- 09:30 — Guild Chroniclers
+Files:
+- `index.html` — the actual responsive site for GitHub Pages
+- `laptop.html` — laptop/desktop preview
+- `mobile.html` — forced mobile-layout preview
+- `assets/` — optimised Jonabit ticket-booth artwork
+
+Release windows for Monday 24 August 2026, London time:
+- 09:30 — Guild Chroniclers with Ticket Packs
+- 09:50 — Guild Chroniclers
 - 09:55 — Guild Members
 - 10:00 — Guild Initiates
-- 11:00 — General Public
+- 11:00 — Early Waitlist
+- 12:30 — Everyone Else
 
-The countdown is calculated in-browser from the viewer's current device time.
-Each clock changes to OPEN when its access time arrives.
+The main status changes:
+- before 09:30 — NO
+- 09:30 to 12:29 — MAYBE
+- from 12:30 — YES
 
-Upload `index.html` to the root of your GitHub Pages repository.
+For GitHub Pages, upload the whole folder contents with `index.html` at repository root.
