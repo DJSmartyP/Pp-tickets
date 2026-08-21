@@ -92,3 +92,13 @@ Selecting a preview time drives the entire page from that simulated time. It upd
 `AUTO` returns the page to the real live clock.
 
 - `CLOSED` previews the page immediately before 09:30: main sign **NO**, with all six access windows still counting down/closed.
+
+## Western / steampunk typography
+
+The entire live UI now uses a Western slab-serif / Victorian mechanical type treatment:
+- state words: heavy Western slab
+- access times and group names: engraved slab-serif
+- countdown digits: telegraph/typewriter monospace
+- labels, footer and hidden menu: matching period-style serif
+
+No remote font service is required, keeping the GitHub Pages build self-contained and fast.
